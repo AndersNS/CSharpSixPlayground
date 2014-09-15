@@ -1,0 +1,14 @@
+﻿{
+    "dependencies": {
+        "Xunit.KRunner": "1.0.0-alpha3",
+        "System.Diagnostics.Debug": ""
+    },
+    "commands": { 
+        "test" : "Xunit.KRunner"
+    },
+    "frameworks": {
+        "net451": { }
+       
+    },
+    "compilationOptions": {"languageVersion": "experimental"}
+}
