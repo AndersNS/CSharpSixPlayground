@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace CSharpSixFeatures.NullPropagation
 {
-    public class User(string name, string email)
+    public class User
     {
-        public string Name { get; } = name;
-        public string Email { get; } = email;
+        public string Name { get; } = "anders";
+        public string Email { get; } = "anders.slinde@domain.com";
 
         public List<Post> Posts { get; set; }
 

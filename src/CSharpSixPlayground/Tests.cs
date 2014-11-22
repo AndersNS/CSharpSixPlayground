@@ -1,37 +1,19 @@
 ﻿using Xunit;
 using System.Collections.Generic;
+using CSharpSixPlayground.ExpressionBodiedMembers;
 
 namespace CSharpSixFeatures
 {
 
     public class Tests
     {
-	    [Fact]
-        public void PrimaryConstructorSetsFields()
-        {
-            var user = new PrimaryConstructor.User("anders", "anders.slinde@domain.com");
-
-            Assert.Same("anders", user.Name);
-            Assert.Same("anders.slinde@domain.com", user.Email);
-        }
-
         [Fact]
         public void AutoPropertyInitializersSetsProperties()
         {
-            var user = new AutoPropertyInitializers.User("anders", "anders.slinde@domain.com");
+            var user = new AutoPropertyInitializers.User();
 
             Assert.Equal("anders", user.Name);
             Assert.Equal("anders.slinde@domain.com", user.Email);
-        }
-
-        [Fact]
-        public void NumberParserReturnsInt()
-        {
-            var parser = new Numberparser();
-
-            var number = parser.ParseString("2");
-
-            Assert.Equal(2, number);
         }
 
         [Fact]
@@ -45,7 +27,7 @@ namespace CSharpSixFeatures
         [Fact]
         public void GetCommentsReturnsNullWhenPostIsNull()
         {
-            var user = new NullPropagation.User("anders", "email");
+            var user = new NullPropagation.User();
 
             var comments = user.GetComments(2);
 
@@ -55,7 +37,7 @@ namespace CSharpSixFeatures
         [Fact]
         public void GetCommentsReturnsNullWhenCommentsIsEmpty()
         {
-            var user = new NullPropagation.User("anders", "email");
+            var user = new NullPropagation.User();
             user.Posts = new List<NullPropagation.Post> { new NullPropagation.Post { Id = 2 } };
 
             var comments = user.GetComments(2);
@@ -65,7 +47,7 @@ namespace CSharpSixFeatures
         [Fact]
         public void GetCommentsReturnsNullWhenPostHasOneComment()
         {
-            var user = new NullPropagation.User("anders", "email");
+            var user = new NullPropagation.User();
             user.Posts = new List<NullPropagation.Post> { new NullPropagation.Post { Id = 2 } };
 
             var comments = user.GetComments(2);
@@ -75,7 +57,7 @@ namespace CSharpSixFeatures
         [Fact]
         public void GetCommentsReturnsOneWhenPostHasOneComment()
         {
-            var user = new NullPropagation.User("anders", "email");
+            var user = new NullPropagation.User();
             user.Posts = new List<NullPropagation.Post>{
                 new NullPropagation.Post { Id = 2,
                 Comments =
@@ -83,6 +65,13 @@ namespace CSharpSixFeatures
 
             var comments = user.GetComments(2);
             Assert.Equal(1, comments.Value);
+        }
+
+        [Fact]
+        public void SizeShouldBeTheSumOfXAndY()
+        {
+            var numberProp = new NumberProps();
+            Assert.Equal(15, numberProp.Size);
         }
     }
 }
